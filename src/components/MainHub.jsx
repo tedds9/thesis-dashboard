@@ -17,7 +17,9 @@ export default function MainHub() {
       {/* HUD HEADER PANEL */}
       <header className="hub-navigation-bar">
         <div className="hub-brand">
-          {DASHBOARD_BRANDING.schoolName} <span className="hub-version-tag">| {DASHBOARD_BRANDING.presentationMode}</span>
+          {DASHBOARD_BRANDING.schoolName} 
+          <span className="hub-researcher-tag"> By {DASHBOARD_BRANDING.researcherName}</span>
+          <span className="hub-version-tag"> | {DASHBOARD_BRANDING.presentationMode}</span>
         </div>
         <div className="hub-tabs">
           {features.map((f) => (

@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   background-color: var(--neutral-950);
+  font-family: var(--font-main);
+  line-height: var(--lh-body);
 }
 
 .hub-navigation-bar {
@@ -22,12 +24,25 @@
   font-size: var(--fs-md);
   font-weight: var(--fw-display);
   color: var(--orange-500);
-  letter-spacing: var(--ls-compact);
+  line-height: var(--lh-compact);
+  letter-spacing: var(--ls-display); /* Tight premium tracking pop */
+}
+
+.hub-researcher-tag {
+  color: var(--neutral-100);
+  font-weight: var(--fw-semi);
+  font-size: var(--fs-sm);
+  margin-left: var(--space-xs);
+  text-transform: uppercase;
+  line-height: var(--lh-compact);
+  letter-spacing: var(--ls-compact); /* Clean name kerning metrics */
 }
 
 .hub-version-tag {
   color: var(--neutral-500);
   font-size: var(--fs-sm);
+  line-height: var(--lh-compact);
+  letter-spacing: var(--ls-compact);
 }
 
 .hub-tabs {
@@ -44,6 +59,14 @@
   font-weight: var(--fw-semi);
   cursor: pointer;
   border-radius: 0.6rem;
+  line-height: var(--lh-compact);
+  letter-spacing: var(--ls-compact);
+  transition: var(--transition-smooth);
+}
+
+.hub-tab-btn:hover {
+  color: var(--neutral-100);
+  background-color: var(--neutral-800);
 }
 
 .hub-tab-btn.hub-active {
@@ -62,8 +85,8 @@
 .hub-viewport-header h1 {
   font-size: calc(var(--fs-lg) + 1.2vw); 
   font-weight: var(--fw-display);
-  line-height: var(--lh-display);
-  letter-spacing: var(--ls-display);
+  line-height: var(--lh-display); /* Balanced display clearance row */
+  letter-spacing: var(--ls-display); /* Bold heading compression */
   color: var(--neutral-100);
   margin: 0;
 }
@@ -72,6 +95,8 @@
   color: var(--neutral-400);
   font-size: var(--fs-sm);
   margin-top: var(--space-xs);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-compact);
 }
 
 .hub-viewport-area {
@@ -83,7 +108,12 @@
   box-sizing: border-box;
 }
 
-.error { color: #ef4444; font-weight: 700; text-align: center; padding: 2rem; }
+.error { 
+  color: #ef4444; 
+  font-weight: var(--fw-display); 
+  text-align: center; 
+  padding: var(--space-md); 
+}
 
 /* --- 🖥️ DESKTOP SCALE RESPONSIVE MEDIA OVERRIDE --- */
 @media screen and (min-width: 48rem) {
