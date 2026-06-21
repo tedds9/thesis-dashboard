@@ -84,7 +84,7 @@
 }
 
 .card-content h2 {
-  font-size: calc(var(--fs-lg) * var(--text-zoom-multiplier)); /* Dynamic Zoom Applied */
+  font-size: calc(var(--fs-lg) * var(--text-zoom-multiplier));
   font-weight: var(--fw-display);
   color: var(--neutral-100);
   margin: 0 0 var(--space-xs) 0;
@@ -136,11 +136,47 @@
 .dive-section-label { font-size: calc(var(--fs-sm) * var(--text-zoom-multiplier)); font-weight: var(--fw-semi); color: var(--orange-500); text-transform: uppercase; }
 .dive-text { margin: 0; font-size: calc(var(--fs-md) * var(--text-zoom-multiplier)); color: var(--neutral-100); line-height: 1.5; }
 
-.jargon-glossary-list { display: flex; flex-direction: column; gap: 0.6rem; background: var(--neutral-900); padding: 1rem; border-radius: 6px; border: 1px solid var(--neutral-800); }
-.glossary-row { display: flex; align-items: flex-start; gap: 0.8rem; font-size: calc(var(--fs-sm) * var(--text-zoom-multiplier)); line-height: 1.4; }
-.jargon-term { color: var(--olive-200); font-weight: 700; width: 35%; flex-shrink: 0; }
-.glossary-arrow { color: var(--neutral-500); }
-.jargon-plain { color: var(--neutral-400); }
+/* 📚 RECONFIGURED SYSTEM GLOSSARY PANEL MATRIX */
+.jargon-glossary-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: var(--space-xs); 
+  background: var(--neutral-900); 
+  padding: 1.2rem; 
+  border-radius: 6px; 
+  border: 1px solid var(--neutral-800); 
+}
+
+.glossary-row { 
+  display: flex; 
+  flex-direction: column; /* FIXED: Default mobile layout stacks terms vertically to give them 100% reading space */
+  gap: 0.4rem; 
+  font-size: calc(var(--fs-sm) * var(--text-zoom-multiplier)); 
+  line-height: 1.4; 
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--neutral-950);
+}
+.glossary-row:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.jargon-term { 
+  color: var(--orange-500); /* FIXED: Swapped to orange brand pop style color for rapid focus identification */
+  font-weight: 700; 
+  width: 100%; /* FIXED: Allows broad text stretching on mobile canvas models */
+  flex-shrink: 0; 
+}
+
+.glossary-arrow { 
+  display: none; /* FIXED: Hidden on mobile layouts to save precious horizontal row real estate */
+}
+
+.jargon-plain { 
+  color: var(--neutral-100); 
+  padding-left: 0.6rem;
+  border-left: 2px solid var(--neutral-800); /* FIXED: Clean accent block separates plain translation context definitions */
+}
 
 .trap-box-stack { display: flex; flex-direction: column; gap: 0.8rem; }
 .trap-item { background: var(--neutral-900); border: 1px solid var(--neutral-800); border-left: 3px solid var(--orange-500); padding: 1rem; border-radius: 0 6px 6px 0; }
@@ -160,7 +196,7 @@
   font-family: var(--font-academic);
   font-style: italic;
   color: var(--neutral-100);
-  font-size: calc(var(--fs-md) * var(--text-zoom-multiplier)); /* Dynamic Zoom Applied */
+  font-size: calc(var(--fs-md) * var(--text-zoom-multiplier)); 
   line-height: var(--lh-body);
 }
 
@@ -205,5 +241,25 @@
   .card-badge {
     width: 4rem;
     height: 4rem;
+  }
+  
+  /* FIXED: Safely restores horizontal dual-column splits only on massive viewports/projectors */
+  .glossary-row {
+    flex-direction: row;
+    gap: 0.8rem;
+    padding-bottom: 0.6rem;
+  }
+  .jargon-term {
+    width: 30%;
+    color: var(--olive-200);
+  }
+  .glossary-arrow {
+    display: inline;
+    color: var(--neutral-500);
+  }
+  .jargon-plain {
+    padding-left: 0;
+    border-left: none;
+    color: var(--neutral-400);
   }
 }
