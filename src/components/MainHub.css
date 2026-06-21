@@ -1,33 +1,49 @@
 /* --- MOBILE FIRST DEFAULT LAYOUT --- */
 .hub-wrapper {
+  --text-zoom-multiplier: 1; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: var(--neutral-950);
   font-family: var(--font-main);
+  font-size: calc(1rem * var(--text-zoom-multiplier));
   line-height: var(--lh-body);
+  padding-top: 11.5rem; /* Balanced depth allowance clearance */
 }
 
 .hub-navigation-bar {
   background-color: var(--neutral-900);
   border-bottom: 1px solid var(--neutral-800);
-  padding: var(--space-sm);
-  display: grid; /* FIXED: Changes layout wrapper to grid layout matching your buttons */
-  grid-template-columns: 1fr auto; 
-  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm); 
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: fixed; 
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
+  transition: transform var(--transition-smooth); 
+  transform: translateY(0); 
+}
+
+.hub-navigation-bar.hub-hidden {
+  transform: translateY(-100%); 
+}
+
+.hub-brand-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
 }
 
 .hub-brand {
   font-size: var(--fs-md);
   font-weight: var(--fw-display);
   color: var(--orange-500);
-  line-height: var(--lh-display); /* FIXED: Gives clearance space so titles don't touch */
+  line-height: var(--lh-display); 
   letter-spacing: var(--ls-display);
-  display: block; /* FIXED: Allows content to separate into cleaner stacked layouts on mobile */
 }
 
 .hub-researcher-tag {
@@ -36,28 +52,74 @@
   font-size: var(--fs-sm);
   text-transform: uppercase;
   letter-spacing: var(--ls-compact);
-  display: block; /* FIXED: Prevents crowding by dropping to its own clean row lines on phone views */
-  margin-top: 0.2rem;
+  display: block; 
+  margin-top: 0.1rem;
 }
 
 .hub-version-tag {
   color: var(--neutral-500);
   font-size: var(--fs-sm);
   letter-spacing: var(--ls-compact);
-  display: block; /* FIXED: Isolates version badge element from getting pushed into tags */
-  margin-top: 0.2rem;
+  display: block; 
+  margin-top: 0.1rem;
+}
+
+/* 🎚️ Modernized Slider Interface Panel */
+.text-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: var(--neutral-950);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--neutral-800);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.slider-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--neutral-400);
+  white-space: nowrap;
+}
+
+.hub-zoom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 9rem;
+  height: 0.4rem;
+  background: var(--neutral-800);
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+.hub-zoom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: var(--orange-500);
+  transition: transform 100ms ease;
+}
+.hub-zoom-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
 }
 
 .hub-tabs {
   display: flex;
   gap: var(--space-xs);
+  align-self: flex-start;
+  margin-top: 0.4rem;
 }
 
 .hub-tab-btn {
   background: transparent;
   border: none;
   color: var(--neutral-400);
-  padding: var(--space-xs) calc(var(--space-xs) * 1.5);
+  padding: var(--space-xs) calc(var(--space-xs) * 1.2);
   font-size: var(--fs-sm);
   font-weight: var(--fw-semi);
   cursor: pointer;
@@ -65,11 +127,6 @@
   line-height: var(--lh-compact);
   letter-spacing: var(--ls-compact);
   transition: var(--transition-smooth);
-}
-
-.hub-tab-btn:hover {
-  color: var(--neutral-100);
-  background-color: var(--neutral-800);
 }
 
 .hub-tab-btn.hub-active {
@@ -80,13 +137,13 @@
 
 .hub-viewport-header {
   text-align: center;
-  padding: var(--space-xl) var(--space-sm) 0 var(--space-sm);
+  padding: var(--space-md) var(--space-sm) 0 var(--space-sm);
   width: 100%;
   box-sizing: border-box;
 }
 
 .hub-viewport-header h1 {
-  font-size: calc(var(--fs-lg) + 1.2vw); 
+  font-size: calc((var(--fs-lg) + 0.8vw) * var(--text-zoom-multiplier)); 
   font-weight: var(--fw-display);
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
@@ -96,7 +153,7 @@
 
 .hub-viewport-header p {
   color: var(--neutral-400);
-  font-size: var(--fs-sm);
+  font-size: calc(var(--fs-sm) * var(--text-zoom-multiplier));
   margin-top: var(--space-xs);
   line-height: var(--lh-body);
   letter-spacing: var(--ls-compact);
@@ -111,36 +168,40 @@
   box-sizing: border-box;
 }
 
-.error { 
-  color: #ef4444; 
-  font-weight: var(--fw-display); 
-  text-align: center; 
-  padding: var(--space-md); 
-}
+.error { color: #ef4444; font-weight: var(--fw-display); text-align: center; padding: var(--space-md); }
 
 /* --- 🖥️ DESKTOP SCALE RESPONSIVE MEDIA OVERRIDE --- */
 @media screen and (min-width: 48rem) {
+  .hub-wrapper {
+    padding-top: 8rem;
+  }
   .hub-navigation-bar {
     padding: var(--space-sm) var(--space-md);
-    display: flex; /* FIXED: Switches back to horizontal layout on larger laptop screens */
-    justify-content: space-between;
   }
-  
+  .hub-brand-group {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-md);
+  }
   .hub-brand {
-    display: flex; /* FIXED: Combines brand text elements side-by-side on wide viewports */
+    display: flex; 
     align-items: center;
     gap: var(--space-xs);
   }
-  
   .hub-researcher-tag, .hub-version-tag {
-    display: inline-block; /* FIXED: Resets elements to standard inline rendering */
+    display: inline-block; 
     margin-top: 0;
   }
-  
-  .hub-viewport-header p {
-    font-size: var(--fs-md);
+  .hub-zoom-slider {
+    width: 12rem;
   }
-  
+  .hub-tabs {
+    align-self: center;
+    margin-top: 0;
+  }
+  .hub-viewport-header p {
+    font-size: calc(var(--fs-md) * var(--text-zoom-multiplier));
+  }
   .hub-viewport-area {
     padding: var(--space-md) var(--space-md) var(--space-xl) var(--space-md);
   }
