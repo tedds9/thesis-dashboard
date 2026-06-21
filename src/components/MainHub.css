@@ -12,8 +12,9 @@
   background-color: var(--neutral-900);
   border-bottom: 1px solid var(--neutral-800);
   padding: var(--space-sm);
-  display: flex;
-  justify-content: space-between;
+  display: grid; /* FIXED: Changes layout wrapper to grid layout matching your buttons */
+  grid-template-columns: 1fr auto; 
+  gap: var(--space-xs);
   align-items: center;
   position: sticky;
   top: 0;
@@ -24,25 +25,27 @@
   font-size: var(--fs-md);
   font-weight: var(--fw-display);
   color: var(--orange-500);
-  line-height: var(--lh-compact);
-  letter-spacing: var(--ls-display); /* Tight premium tracking pop */
+  line-height: var(--lh-display); /* FIXED: Gives clearance space so titles don't touch */
+  letter-spacing: var(--ls-display);
+  display: block; /* FIXED: Allows content to separate into cleaner stacked layouts on mobile */
 }
 
 .hub-researcher-tag {
   color: var(--neutral-100);
   font-weight: var(--fw-semi);
   font-size: var(--fs-sm);
-  margin-left: var(--space-xs);
   text-transform: uppercase;
-  line-height: var(--lh-compact);
-  letter-spacing: var(--ls-compact); /* Clean name kerning metrics */
+  letter-spacing: var(--ls-compact);
+  display: block; /* FIXED: Prevents crowding by dropping to its own clean row lines on phone views */
+  margin-top: 0.2rem;
 }
 
 .hub-version-tag {
   color: var(--neutral-500);
   font-size: var(--fs-sm);
-  line-height: var(--lh-compact);
   letter-spacing: var(--ls-compact);
+  display: block; /* FIXED: Isolates version badge element from getting pushed into tags */
+  margin-top: 0.2rem;
 }
 
 .hub-tabs {
@@ -85,8 +88,8 @@
 .hub-viewport-header h1 {
   font-size: calc(var(--fs-lg) + 1.2vw); 
   font-weight: var(--fw-display);
-  line-height: var(--lh-display); /* Balanced display clearance row */
-  letter-spacing: var(--ls-display); /* Bold heading compression */
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
   color: var(--neutral-100);
   margin: 0;
 }
@@ -119,10 +122,25 @@
 @media screen and (min-width: 48rem) {
   .hub-navigation-bar {
     padding: var(--space-sm) var(--space-md);
+    display: flex; /* FIXED: Switches back to horizontal layout on larger laptop screens */
+    justify-content: space-between;
   }
+  
+  .hub-brand {
+    display: flex; /* FIXED: Combines brand text elements side-by-side on wide viewports */
+    align-items: center;
+    gap: var(--space-xs);
+  }
+  
+  .hub-researcher-tag, .hub-version-tag {
+    display: inline-block; /* FIXED: Resets elements to standard inline rendering */
+    margin-top: 0;
+  }
+  
   .hub-viewport-header p {
     font-size: var(--fs-md);
   }
+  
   .hub-viewport-area {
     padding: var(--space-md) var(--space-md) var(--space-xl) var(--space-md);
   }
