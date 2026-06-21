@@ -1,0 +1,209 @@
+/* Individual Component Card Container Layout */
+.simple-card {
+  background-color: var(--neutral-900);
+  border: 1px solid var(--neutral-800);
+  border-radius: 1.2rem;
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column; /* Mobile first vertical stack */
+  gap: var(--space-sm);
+  scroll-margin-top: 8rem;
+  box-sizing: border-box;
+  transition: transform 150ms ease, border-color 150ms ease;
+}
+
+/* Hover state interaction parameters */
+.card-clickable-preview {
+  cursor: pointer;
+}
+.card-clickable-preview:hover {
+  border-color: var(--neutral-500);
+  transform: translateY(-1px);
+}
+
+/* Selected active card border state */
+.card-expanded-border {
+  border-color: var(--orange-500);
+}
+
+/* Index Badges */
+.card-badge {
+  background-color: var(--neutral-800);
+  color: var(--neutral-400);
+  border: 1px solid var(--neutral-800);
+  font-weight: var(--fw-display);
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: var(--fs-md);
+  transition: all 150ms ease;
+}
+.card-clickable-preview:hover .card-badge {
+  color: var(--orange-500);
+  border-color: var(--orange-500);
+}
+.badge-active {
+  background-color: var(--orange-500);
+  color: #000000 !important;
+  border-color: var(--orange-500);
+}
+
+.card-content {
+  width: 100%;
+}
+
+.click-prompt-hint {
+  font-size: var(--fs-sm);
+  color: var(--neutral-500);
+  font-style: italic;
+  margin-top: 0.4rem;
+}
+
+.category-tag {
+  display: inline-block;
+  background-color: var(--neutral-800);
+  color: var(--olive-200);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.4rem;
+  margin-bottom: var(--space-xs);
+  border: 1px solid var(--neutral-800);
+}
+
+.compliance-marker {
+  font-size: var(--fs-sm);
+  color: #22c55e;
+  font-weight: var(--fw-semi);
+  margin-bottom: var(--space-sm);
+}
+
+.card-content h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-display);
+  color: var(--neutral-100);
+  margin: 0 0 var(--space-xs) 0;
+  letter-spacing: var(--ls-compact);
+  line-height: var(--lh-display);
+}
+
+.box-label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  color: var(--neutral-500);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+/* 💡 Deep Dive Explanation System Styles */
+.deep-dive-container {
+  margin: var(--space-sm) 0;
+  width: 100%;
+}
+.deep-dive-trigger-btn {
+  background-color: var(--neutral-800);
+  border: 1px solid var(--neutral-800);
+  color: var(--neutral-100);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  padding: 0.8rem 1.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 150ms ease;
+  width: 100%;
+  text-align: left;
+}
+.deep-dive-trigger-btn:hover { border-color: var(--neutral-400); }
+.deep-dive-trigger-btn.dive-active { background-color: var(--neutral-950); border-color: var(--orange-500); color: var(--orange-500); }
+
+.deep-dive-content-panel {
+  background-color: var(--neutral-950);
+  border: 1px solid var(--neutral-800);
+  border-top: none;
+  padding: var(--space-sm);
+  border-radius: 0 0 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.dive-section { display: flex; flex-direction: column; gap: 0.4rem; }
+.dive-section-label { font-size: var(--fs-sm); font-weight: var(--fw-semi); color: var(--orange-500); text-transform: uppercase; }
+.dive-text { margin: 0; font-size: var(--fs-md); color: var(--neutral-100); line-height: 1.5; }
+
+.jargon-glossary-list { display: flex; flex-direction: column; gap: 0.6rem; background: var(--neutral-900); padding: 1rem; border-radius: 6px; border: 1px solid var(--neutral-800); }
+.glossary-row { display: flex; align-items: flex-start; gap: 0.8rem; font-size: var(--fs-sm); line-height: 1.4; }
+.jargon-term { color: var(--olive-200); font-weight: 700; width: 35%; flex-shrink: 0; }
+.glossary-arrow { color: var(--neutral-500); }
+.jargon-plain { color: var(--neutral-400); }
+
+.trap-box-stack { display: flex; flex-direction: column; gap: 0.8rem; }
+.trap-item { background: var(--neutral-900); border: 1px solid var(--neutral-800); border-left: 3px solid var(--orange-500); padding: 1rem; border-radius: 0 6px 6px 0; }
+.trap-q { margin: 0 0 0.4rem 0; font-size: var(--fs-sm); color: var(--neutral-100); font-style: italic; }
+.trap-a { margin: 0; font-size: var(--fs-sm); color: var(--neutral-400); line-height: 1.4; }
+
+/* Academic Textbook Quote Display Blocks */
+.academic-box {
+  background-color: var(--neutral-950);
+  border-left: 3px solid var(--orange-500);
+  padding: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  border-radius: 0 0.6rem 0.6rem 0;
+}
+.academic-box p {
+  margin: 0;
+  font-family: var(--font-academic);
+  font-style: italic;
+  color: var(--neutral-100);
+  font-size: var(--fs-md);
+  line-height: var(--lh-body);
+}
+
+.explanation-box { margin-bottom: var(--space-sm); }
+.explanation-box p { margin: 0; font-size: var(--fs-md); color: var(--neutral-400); line-height: var(--lh-body); }
+
+/* Defense Scripts Sub-Panels */
+.script-box {
+  padding: var(--space-sm);
+  border-radius: 0.8rem;
+  margin-top: var(--space-xs);
+  background-color: var(--neutral-950);
+  border: 1px solid var(--neutral-800);
+}
+.script-box p { margin: 0; font-size: var(--fs-sm); color: var(--neutral-100); line-height: 1.5; }
+
+.primary-script { border-left: 3px solid #22c55e; }
+.secondary-script { border-left: 3px solid var(--olive-200); }
+
+/* Verified Hyperlinks Setup */
+.link-container {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px dashed var(--neutral-800);
+}
+.links-flex-wrapper { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.simple-link-btn { display: inline-flex; align-items: center; gap: 0.4rem; background-color: var(--neutral-800); color: var(--neutral-100); text-decoration: none; font-size: var(--fs-sm); font-weight: var(--fw-semi); padding: 0.6rem 1.2rem; border-radius: 0.6rem; border: 1px solid var(--neutral-800); transition: var(--transition-smooth); }
+.simple-link-btn:hover { background-color: var(--orange-500); color: #000000; }
+.link-arrow { font-size: var(--fs-sm); }
+
+/* Animation Utils */
+.animate-fadeIn { animation: cardFadeIn 200ms ease-out forwards; }
+@keyframes cardFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 🖥️ DESKTOP SCALE RESPONSIVE MEDIA OVERRIDE */
+@media screen and (min-width: 48rem) {
+  .simple-card {
+    flex-direction: row;
+    padding: var(--space-md);
+    gap: var(--space-md);
+  }
+  .card-badge {
+    width: 4rem;
+    height: 4rem;
+  }
+}

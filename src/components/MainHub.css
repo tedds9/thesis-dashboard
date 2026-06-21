@@ -1,0 +1,99 @@
+/* --- MOBILE FIRST DEFAULT LAYOUT --- */
+.hub-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--neutral-950);
+}
+
+.hub-navigation-bar {
+  background-color: var(--neutral-900);
+  border-bottom: 1px solid var(--neutral-800);
+  padding: var(--space-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.hub-brand {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-display);
+  color: var(--orange-500);
+  letter-spacing: var(--ls-compact);
+}
+
+.hub-version-tag {
+  color: var(--neutral-500);
+  font-size: var(--fs-sm);
+}
+
+.hub-tabs {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.hub-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--neutral-400);
+  padding: var(--space-xs) calc(var(--space-xs) * 1.5);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  cursor: pointer;
+  border-radius: 0.6rem;
+}
+
+.hub-tab-btn.hub-active {
+  background-color: var(--orange-500);
+  color: #000000;
+  font-weight: var(--fw-display);
+}
+
+.hub-viewport-header {
+  text-align: center;
+  padding: var(--space-xl) var(--space-sm) 0 var(--space-sm);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hub-viewport-header h1 {
+  font-size: calc(var(--fs-lg) + 1.2vw); 
+  font-weight: var(--fw-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--neutral-100);
+  margin: 0;
+}
+
+.hub-viewport-header p {
+  color: var(--neutral-400);
+  font-size: var(--fs-sm);
+  margin-top: var(--space-xs);
+}
+
+.hub-viewport-area {
+  flex: 1;
+  padding: var(--space-sm);
+  width: 100%;
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.error { color: #ef4444; font-weight: 700; text-align: center; padding: 2rem; }
+
+/* --- 🖥️ DESKTOP SCALE RESPONSIVE MEDIA OVERRIDE --- */
+@media screen and (min-width: 48rem) {
+  .hub-navigation-bar {
+    padding: var(--space-sm) var(--space-md);
+  }
+  .hub-viewport-header p {
+    font-size: var(--fs-md);
+  }
+  .hub-viewport-area {
+    padding: var(--space-md) var(--space-md) var(--space-xl) var(--space-md);
+  }
+}

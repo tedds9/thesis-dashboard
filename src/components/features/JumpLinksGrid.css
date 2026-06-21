@@ -1,0 +1,61 @@
+/* --- MOBILE FIRST DEFAULT LAYOUT --- */
+.quick-jump-panel {
+  background-color: var(--neutral-900);
+  border: 1px solid var(--neutral-800);
+  border-radius: 12px;
+  padding: var(--space-sm);
+  margin-bottom: var(--space-md);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.jump-box-label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  color: var(--orange-500);
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.05em;
+}
+
+.jump-buttons-wrapper {
+  display: grid;
+  /* Fluid multi-column setup that drops into 2 columns on small screens */
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xs);
+}
+
+.jump-anchor-btn {
+  background-color: var(--neutral-800);
+  border: 1px solid var(--neutral-800);
+  color: var(--neutral-100);
+  padding: 1rem var(--space-xs);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+.jump-anchor-btn:hover {
+  background-color: var(--orange-500);
+  color: #000000;
+  border-color: var(--orange-500);
+}
+
+/* --- 🖥️ DESKTOP SCALE RESPONSIVE MEDIA OVERRIDE --- */
+@media screen and (min-width: 48rem) {
+  .jump-buttons-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .jump-anchor-btn {
+    width: auto;
+    padding: 0.8rem 1.6rem;
+  }
+}

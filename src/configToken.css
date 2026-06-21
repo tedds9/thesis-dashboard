@@ -1,0 +1,48 @@
+:root {
+  /* 🎨 Color Space Tokens */
+  --neutral-950: #0a0a0a;
+  --neutral-900: #171717;
+  --neutral-800: #262626;
+  --neutral-100: #f5f5f5;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --orange-500: #ff5500;
+  --olive-200:   #dce2aa;
+
+  --color-bg-base:       var(--neutral-950);
+  --color-bg-surface:    var(--neutral-900);
+  --color-bg-muted:      var(--neutral-800);
+  --color-border:        var(--neutral-800);
+  --color-text-main:     var(--neutral-100);
+  --color-text-muted:    var(--neutral-400);
+  --color-text-disabled: var(--neutral-500);
+  --color-accent:         var(--orange-500);
+  --color-accent-muted:    var(--olive-200);
+
+  /* 📐 Layout Spacing Tokens */
+  --space-xs: 0.8rem;
+  --space-sm: 1.6rem;
+  --space-md: 2.4rem;
+  --space-lg: 3.2rem;
+  --space-xl: 4.8rem;
+  --grid-max-width: 120rem;
+
+  /* 📋 Typography Engine Metrics */
+  --font-main: system-ui, -apple-system, sans-serif;
+  --font-academic: Georgia, Cambria, 'Times New Roman', serif;
+  
+  --fs-sm: 1.3rem;
+  --fs-md: 1.6rem;
+  --fs-lg: 2.2rem;
+  --fs-xl: 3.2rem;
+
+  --lh-display: 1.2;
+  --lh-body: 1.65;
+  --lh-compact: 1.0;
+
+  --ls-display: -0.03em;
+  --ls-compact: -0.01em;
+
+  --fw-display: 800;
+  --fw-semi: 600;
+}

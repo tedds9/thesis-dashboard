@@ -1,0 +1,56 @@
+.cards-module-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Category Selection Ribbon Filter Navigation */
+.category-ribbon {
+  display: flex;
+  gap: var(--space-xs);
+  overflow-x: auto;
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-md);
+  scrollbar-width: none;
+}
+.category-ribbon::-webkit-scrollbar { display: none; }
+
+.ribbon-tab {
+  white-space: nowrap;
+  background-color: var(--neutral-900);
+  border: 1px solid var(--neutral-800);
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  color: var(--neutral-400);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.ribbon-tab:hover, .ribbon-tab.tab-active {
+  border-color: var(--neutral-100);
+  color: var(--neutral-100);
+}
+.ribbon-tab.tab-active {
+  background-color: var(--neutral-100);
+  color: var(--neutral-950);
+}
+
+/* Dynamic Vertical Cards Stream Layout Container */
+.simple-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+@media screen and (min-width: 48rem) {
+  .category-ribbon {
+    margin-bottom: var(--space-md);
+  }
+  .simple-list {
+    gap: var(--space-md);
+  }
+}
