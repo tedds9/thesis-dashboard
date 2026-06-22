@@ -4,26 +4,30 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--neutral-950);
+  /* Fixed: Changed from hardcoded dark code variables to live tokens */
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
   font-family: var(--font-main);
   font-size: calc(1rem * var(--text-zoom-multiplier));
   line-height: var(--lh-body);
-  padding-top: 11.5rem; /* Balanced depth allowance clearance */
+  padding-top: 15rem; /* Increased allowance for stacked controls on mobile viewports */
+  transition: background-color var(--transition-smooth);
 }
 
 .hub-navigation-bar {
-  background-color: var(--neutral-900);
-  border-bottom: 1px solid var(--neutral-800);
+  /* Fixed: Linked directly to our adaptive color tokens */
+  background-color: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border);
   padding: var(--space-xs) var(--space-sm); 
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column; /* Stack vertically on small phone displays */
+  gap: var(--space-xs);
   position: fixed; 
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  transition: transform var(--transition-smooth); 
+  transition: transform var(--transition-smooth), background-color var(--transition-smooth), border-color var(--transition-smooth); 
   transform: translateY(0); 
 }
 
@@ -34,8 +38,8 @@
 .hub-brand-group {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  flex: 1;
+  gap: 0.2rem;
+  width: 100%;
 }
 
 .hub-brand {
@@ -47,7 +51,7 @@
 }
 
 .hub-researcher-tag {
-  color: var(--neutral-100);
+  color: var(--color-text-main);
   font-weight: var(--fw-semi);
   font-size: var(--fs-sm);
   text-transform: uppercase;
@@ -57,11 +61,42 @@
 }
 
 .hub-version-tag {
-  color: var(--neutral-500);
+  color: var(--color-text-disabled);
   font-size: var(--fs-sm);
   letter-spacing: var(--ls-compact);
   display: block; 
   margin-top: 0.1rem;
+}
+
+/* Layout Wrapper for Console Control Elements */
+.hub-console-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Spread across screen on mobile viewports */
+  width: 100%;
+  gap: var(--space-xs);
+}
+
+/* High-Utility Tactical Theme Button */
+.hub-theme-toggle-btn {
+  background-color: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  color: var(--color-accent);
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-weight: var(--fw-display);
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: var(--ls-compact);
+  transition: var(--transition-smooth);
+}
+
+.hub-theme-toggle-btn:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-bg-base);
+  box-shadow: 0 0 8px rgba(255, 85, 0, 0.15);
 }
 
 /* 🎚️ Modernized Slider Interface Panel */
@@ -69,27 +104,26 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  background-color: var(--neutral-950);
+  background-color: var(--color-bg-base);
   padding: 0.4rem 0.8rem;
   border-radius: 0.6rem;
-  border: 1px solid var(--neutral-800);
+  border: 1px solid var(--color-border);
   width: fit-content;
-  max-width: 100%;
 }
 
 .slider-label {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--neutral-400);
+  color: var(--color-text-muted);
   white-space: nowrap;
 }
 
 .hub-zoom-slider {
   -webkit-appearance: none;
   appearance: none;
-  width: 9rem;
+  width: 8rem;
   height: 0.4rem;
-  background: var(--neutral-800);
+  background: var(--color-bg-muted);
   border-radius: 999px;
   outline: none;
   cursor: pointer;
@@ -111,15 +145,14 @@
 .hub-tabs {
   display: flex;
   gap: var(--space-xs);
-  align-self: flex-start;
-  margin-top: 0.4rem;
+  width: 100%;
 }
 
 .hub-tab-btn {
-  background: transparent;
-  border: none;
-  color: var(--neutral-400);
-  padding: var(--space-xs) calc(var(--space-xs) * 1.2);
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  padding: var(--space-xs) var(--space-sm);
   font-size: var(--fs-sm);
   font-weight: var(--fw-semi);
   cursor: pointer;
@@ -127,10 +160,13 @@
   line-height: var(--lh-compact);
   letter-spacing: var(--ls-compact);
   transition: var(--transition-smooth);
+  flex: 1;
+  text-align: center;
 }
 
 .hub-tab-btn.hub-active {
   background-color: var(--orange-500);
+  border-color: var(--orange-500);
   color: #000000;
   font-weight: var(--fw-display);
 }
@@ -147,12 +183,12 @@
   font-weight: var(--fw-display);
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
-  color: var(--neutral-100);
+  color: var(--color-text-main);
   margin: 0;
 }
 
 .hub-viewport-header p {
-  color: var(--neutral-400);
+  color: var(--color-text-muted);
   font-size: calc(var(--fs-sm) * var(--text-zoom-multiplier));
   margin-top: var(--space-xs);
   line-height: var(--lh-body);
@@ -173,35 +209,56 @@
 /* --- 🖥️ DESKTOP SCALE RESPONSIVE MEDIA OVERRIDE --- */
 @media screen and (min-width: 48rem) {
   .hub-wrapper {
-    padding-top: 8rem;
+    padding-top: 8rem; /* Restore tighter top space when layout shifts to inline row horizontal alignment */
   }
+  
   .hub-navigation-bar {
+    flex-direction: row; /* Align inline across large monitors */
+    justify-content: space-between;
     padding: var(--space-sm) var(--space-md);
+    gap: var(--space-md);
   }
+  
   .hub-brand-group {
     flex-direction: row;
     align-items: center;
     gap: var(--space-md);
+    width: auto;
   }
+  
   .hub-brand {
     display: flex; 
     align-items: center;
     gap: var(--space-xs);
   }
+  
   .hub-researcher-tag, .hub-version-tag {
     display: inline-block; 
     margin-top: 0;
   }
+  
+  .hub-console-controls {
+    width: auto;
+    justify-content: flex-end;
+    gap: var(--space-md);
+  }
+
   .hub-zoom-slider {
     width: 12rem;
   }
+  
   .hub-tabs {
-    align-self: center;
-    margin-top: 0;
+    width: auto;
   }
+
+  .hub-tab-btn {
+    flex: none;
+  }
+
   .hub-viewport-header p {
     font-size: calc(var(--fs-md) * var(--text-zoom-multiplier));
   }
+  
   .hub-viewport-area {
     padding: var(--space-md) var(--space-md) var(--space-xl) var(--space-md);
   }

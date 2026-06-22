@@ -2,7 +2,7 @@ export const DASHBOARD_BRANDING = {
   schoolName: "IETI COLLEGE ALABANG",
   dashboardTitle: "Thesis Defense Compliance Dashboard",
   subTitle: "Dynamic Panel Evaluation & Structural Checklist Tracker",
-  presentationMode: "War Room Alpha v1.4",
+  presentationMode: "Research study v1.4",
   researcherName: "TEDY BAISAC" // Added your name here
 };
 

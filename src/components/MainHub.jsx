@@ -14,23 +14,37 @@ export default function MainHub() {
   // 🔍 Fluid Text Slider Multiplier Scale (1.0 is standard neutral fallback)
   const [textScale, setTextScale] = useState(1.0);
 
+  // 🎨 Global Color Space Theme Toggles
+  const [isLightMode, setIsLightMode] = useState(false);
+
   const features = [
     { id: 'checklist', label: '📋 Compliance Checklist', component: <ChecklistView /> }
   ];
 
   const currentFeature = features.find(f => f.id === activeFeature);
 
-  // 🔄 Fluid Scroll Management Listener Hook
+  // 🔄 Fluid Scroll Management Listener Hook with Intentional Up-Scroll Tolerance
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY < 10) {
+      const scrollDifference = currentScrollY - lastScrollY;
+      const scrollTolerance = 15; // ⚡ FIXED: Minimum pixel threshold to verify intentional up-scroll direction
+
+      // Absolute top state rule
+      if (currentScrollY < 15) {
         setIsVisible(true);
-      } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        return;
+      }
+
+      // Scrolling Down -> Hide Navigation Panel Bar
+      if (scrollDifference > 0 && currentScrollY > 60) {
         setIsVisible(false);
-      } else if (currentScrollY < lastScrollY) {
+      } 
+      // Scrolling Up -> Show Bar ONLY if user clears the deliberate gap limit threshold
+      else if (scrollDifference < -scrollTolerance) {
         setIsVisible(true);
       }
+
       setLastScrollY(currentScrollY);
     };
 
@@ -38,21 +52,38 @@ export default function MainHub() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  // ☀️ Synchronize Theme Token Toggles Directly to Document Root
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', isLightMode ? 'light' : 'dark');
+  }, [isLightMode]);
+
   return (
     <div className="hub-wrapper" style={{ '--text-zoom-multiplier': textScale }}>
       
       {/* HUD HEADER PANEL */}
       <header className={`hub-navigation-bar ${!isVisible ? 'hub-hidden' : ''}`}>
+        
+        {/* BRANDING HUB LEFT NODE */}
         <div className="hub-brand-group">
           <div className="hub-brand">
             {DASHBOARD_BRANDING.schoolName} 
             <span className="hub-researcher-tag">By {DASHBOARD_BRANDING.researcherName}</span>
             <span className="hub-version-tag">| {DASHBOARD_BRANDING.presentationMode}</span>
           </div>
-          
-          {/* 🎚️ DYNAMIC SLIDER CONSOLE CONTROLS */}
+        </div>
+
+        {/* 🎚️ CONTROL PANEL CONSOLE */}
+        <div className="hub-console-controls">
+          <button 
+            className="hub-theme-toggle-btn"
+            onClick={() => setIsLightMode(!isLightMode)}
+            aria-label="Toggle Dashboard Color Mode Matrix"
+          >
+            {isLightMode ? '🌙 DARK' : '☀️ LIGHT'}
+          </button>
+
           <div className="text-slider-container">
-            <span className="slider-label">🔎 Text Size: {Math.round(textScale * 100)}%</span>
+            <span className="slider-label">🔎 Text: {Math.round(textScale * 100)}%</span>
             <input 
               type="range" 
               min="0.75" 
@@ -65,6 +96,7 @@ export default function MainHub() {
           </div>
         </div>
 
+        {/* NAVIGATION TAB CONTROLLER */}
         <div className="hub-tabs">
           {features.map((f) => (
             <button

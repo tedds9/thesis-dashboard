@@ -1,5 +1,5 @@
 :root {
-  /* 🎨 Color Space Tokens */
+  /* 🎨 Default Dark Color Space Tokens */
   --neutral-950: #0a0a0a;
   --neutral-900: #171717;
   --neutral-800: #262626;
@@ -42,7 +42,21 @@
 
   --ls-display: -0.03em;
   --ls-compact: -0.01em;
-
   --fw-display: 800;
   --fw-semi: 600;
+}
+
+/* ☀️ FIXED: Pulled completely outside of :root so the DOM can read it natively */
+[data-theme="light"] {
+  --color-bg-base:       #f5f5f5; 
+  --color-bg-surface:    #ffffff; 
+  --color-bg-muted:      #e5e5e5; 
+  --color-border:        #d4d4d4; 
+  
+  --color-text-main:     #171717; 
+  --color-text-muted:    #404040; 
+  --color-text-disabled: #737373; 
+  
+  --color-accent:        #e64d00; 
+  --color-accent-muted:   #5c632e; 
 }
